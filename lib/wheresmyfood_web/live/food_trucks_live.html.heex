@@ -50,7 +50,7 @@
                                 height="250"
                                 frameborder="0"
                                 style="border:0"
-                                src={ "https://www.google.com/maps/embed/v1/place?key=AIzaSyCncwKABxPBMnM9mrsWQRjGubuiKN18z9Y&q=#{ truck["latitude"] },#{truck["longitude"] }" }
+                                src={ "https://www.google.com/maps/embed/v1/place?key=#{ Application.get_env(:wheresmyfood, :google_api_key) }&q=#{ truck["latitude"] },#{truck["longitude"] }" }
                                 allowfullscreen>
                             </iframe>
                         </div>
