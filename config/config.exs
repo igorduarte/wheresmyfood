@@ -19,8 +19,10 @@ config :wheresmyfood, WheresmyfoodWeb.Endpoint,
     formats: [html: WheresmyfoodWeb.ErrorHTML, json: WheresmyfoodWeb.ErrorJSON],
     layout: false
   ],
+  server: true,
   pubsub_server: Wheresmyfood.PubSub,
-  live_view: [signing_salt: "tcQQVku6"]
+  live_view: [signing_salt: "tcQQVku6"],
+  check_origin: false
 
 # Configures the mailer
 #

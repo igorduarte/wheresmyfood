@@ -1,4 +1,4 @@
-defmodule WheresmyfoodWeb.PageHTML do
+defmodule WheresmyfoodWeb.FoodTrucksHTML do
   @moduledoc """
   This module contains pages rendered by PageController.
 
@@ -6,5 +6,5 @@ defmodule WheresmyfoodWeb.PageHTML do
   """
   use WheresmyfoodWeb, :html
 
-  embed_templates "page_html/*"
+  embed_templates "food_trucks_html/*"
 end
