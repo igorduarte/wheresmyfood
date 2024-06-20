@@ -3,6 +3,8 @@ defmodule Wheresmyfood.FoodTrucks.ApiClient do
   Client module to fetch food truck data from the San Francisco open data API.
   """
 
+  @behaviour Wheresmyfood.FoodTrucks.ApiClientBehaviour
+
   @endpoint "https://data.sfgov.org/resource/rqzj-sfat.json"
 
   alias HTTPoison.Response
@@ -10,9 +12,10 @@ defmodule Wheresmyfood.FoodTrucks.ApiClient do
 
   require Logger
 
+  @impl true
   @spec get_food_trucks_from_api() :: {:ok, list()} | {:error, String.t()}
   def get_food_trucks_from_api do
-    case HTTPoison.get(@endpoint) do
+    case http_client().get(@endpoint) do
       {:ok, %Response{status_code: 200, body: body}} ->
         handle_response(body)
 
@@ -46,5 +49,9 @@ defmodule Wheresmyfood.FoodTrucks.ApiClient do
   defp handle_error_response(reason) do
     Logger.error("HTTP request failed: #{inspect(reason)}")
     {:error, "HTTP request failed: #{inspect(reason)}"}
+  end
+
+  defp http_client do
+    Application.get_env(:wheresmyfood, :http_client)
   end
 end

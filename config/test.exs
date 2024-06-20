@@ -35,3 +35,7 @@ config :phoenix, :plug_init_mode, :runtime
 config :phoenix_live_view,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true
+
+# Mocks
+config :wheresmyfood, http_client: HTTPoison.BaseMock
+config :wheresmyfood, :api_client, Wheresmyfood.FoodTrucks.ApiClientMock
